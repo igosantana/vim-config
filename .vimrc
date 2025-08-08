@@ -1,5 +1,5 @@
 " --------------------
-" Plugin manager setup
+" Plugin Manager Setup
 " --------------------
 call plug#begin('~/.vim/plugged')
 
@@ -18,19 +18,19 @@ call plug#end()
 set nocompatible
 syntax on
 filetype plugin indent on
-set number                      " número de linhas
-set relativenumber              " números relativos (útil pra navegar)
+set number                      " show line numbers
+set relativenumber              " show relative line numbers (useful for navigation)
 set tabstop=4
 set shiftwidth=4
-set expandtab                   " usa espaços no lugar de tabs
+set expandtab                   " use spaces instead of tabs
 set autoindent
 set smartindent
-set clipboard=unnamedplus       " integra com clipboard do sistema
+set clipboard=unnamedplus       " integrate with system clipboard
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set mouse=a                     " ativa mouse
+set mouse=a                     " enable mouse
 set termguicolors
 set term=xterm-256color
 set nobackup
@@ -39,28 +39,27 @@ set encoding=utf-8
 set updatetime=300
 colorscheme desert
 
-" Define a tecla líder
+" Define leader key
 let mapleader = " "
 
 " --------------------
-" Fuzy 
+" Fuzzy Finder
 " --------------------
-" Buscar arquivos 
+" Search files
 nnoremap <leader>ff :Files<CR>
 
-" Buscar conteúdo dentro dos arquivos 
+" Search content inside files
 nnoremap <leader>fg :Rg<CR>
 
-" Buscar buffers abertos
+" Search open buffers
 nnoremap <leader>fb :Buffers<CR>
 
-" Histórico de comandos
+" Command history
 nnoremap <leader>fh :History<CR>
 
 " --------------------
-" Atalhos úteis
+" Useful Shortcuts
 " --------------------
-
 
 " Quit
 nnoremap <leader>qq :qa!<CR>
@@ -75,42 +74,42 @@ nnoremap <C-v> <C-v>
 " Fugitive
 nnoremap <leader>of :G<CR>:only<CR>
 
-" Não copiar para o clipboard com x
+" Delete without copying to clipboard
 nnoremap x "_x
 
 " Split windows
 nnoremap <leader>sh :sp<CR>
 nnoremap <leader>sv :vs<CR>
 
-" Mover entre janelas
+" Move between windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Redimensionar janelas
+" Resize windows
 nnoremap <C-Left> :vertical resize -2<CR>
 nnoremap <C-Right> :vertical resize +2<CR>
 nnoremap <C-Up> :resize +2<CR>
 nnoremap <C-Down> :resize -2<CR>
 nnoremap <leader>we <C-w>=
 
-" Mover linha ou bloco selecionado (modo visual)
+" Move line or selected block (visual mode)
 xnoremap <S-j> :move '>+1<CR>gv-gv
 xnoremap <S-k> :move '<-2<CR>gv-gv
 
-" Cursor no centro ao buscar
+" Keep cursor centered when searching
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" Melhor indentação em modo visual
+" Better indentation in visual mode
 vnoremap > >gv
 vnoremap < <gv
 
-" Colar sem copiar o que está sendo substituído
+" Paste without overwriting the clipboard
 vnoremap p "_dP
 
-" Cancelar realce de busca
+" Cancel search highlight
 nnoremap <Esc> :nohlsearch<Bar>:echo<CR>
 
 
@@ -118,14 +117,14 @@ nnoremap <Esc> :nohlsearch<Bar>:echo<CR>
 " Coc.nvim 
 " --------------------
 " Use :CocInstall coc-tsserver coc-json coc-html etc.
-" Para linguagens específicas
-" Ir para definição
+
+" Go to definition
 nmap <silent> gd <Plug>(coc-definition)
 
-" Ir para referencias
+" Go to references
 nmap <silent> gr <Plug>(coc-references)
 
-" Mostrar tipo e documentação da variável/função sob o cursor
+" Show type and documentation for variable/function under cursor
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
@@ -136,7 +135,7 @@ function! ShowDocumentation()
   endif
 endfunction
 
-" Autocompletar com <Tab>
+" Autocomplete with <Tab>
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
@@ -145,7 +144,7 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" Format exp
+" Format example
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
@@ -159,17 +158,17 @@ command! Gqf GitGutterQuickFix | copen
 
 
 " --------------------
-" Vim commands 
+" Vim Commands 
 " --------------------
 
-" Criar pasta
+" Create directory
 command! -nargs=1 Mkdir execute '!mkdir -p ' . shellescape(<q-args>)
 
-" Criar arquivo
+" Create file
 command! -nargs=1 Touch  execute '!touch ' . shellescape(<q-args>)
 
-" Copiar arquivo ou pasta
+" Copy file or folder
 command! -nargs=+ Cp  execute '!cp -r ' . shellescape(<q-args>)
 
-" Mover ou renomear
+" Move or rename
 command! -nargs=+ Mv  execute '!mv ' . shellescape(<q-args>)
