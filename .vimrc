@@ -55,9 +55,6 @@ nnoremap <leader>ff :Files<CR>
 " Search content inside files
 nnoremap <leader>fg :Rg<CR>
 
-" Search open buffers
-nnoremap <leader>fb :Buffers<CR>
-
 " Command history
 nnoremap <leader>fh :History<CR>
 
@@ -267,4 +264,12 @@ let g:startify_bookmarks = [
 let g:startify_custom_header = 'startify#pad(g:jesus_ascii)'
 let g:startify_padding_left = 80
 
-au BufWrite * :Autoformat
+let $FZF_DEFAULT_OPTS = '--layout=reverse --info=inline'
+let $FZF_DEFAULT_OPTS .= ' --bind=ctrl-n:down,ctrl-p:up'
+let $FZF_DEFAULT_OPTS .= ' --preview-window=right:50%:wrap'
+
+set directory=~/.vim/swap//
+
+if !isdirectory($HOME."/.vim/swap")
+    call mkdir($HOME."/.vim/swap", "p", 0700)
+endif
