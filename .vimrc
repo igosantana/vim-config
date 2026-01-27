@@ -5,13 +5,14 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify', {'branch': 'center'}
 Plug 'vim-autoformat/vim-autoformat'
-Plug 'tpope/vim-commentary'
+Plug 'vim-airline/vim-airline'
 
 
 call plug#end()
