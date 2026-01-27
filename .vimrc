@@ -63,9 +63,11 @@ nnoremap <leader>fh :History<CR>
 " ============================
 
 " Quit
-nnoremap <leader>qq :qa!<CR>
+nnoremap <leader>qq :q<CR>
 nnoremap <leader>wq :wq<CR>
-nnoremap <leader>q :q<CR>
+
+" Folder
+nnoremap <leader>od :Ex<CR>
 
 " Save
 nnoremap <C-s> :w<CR>
